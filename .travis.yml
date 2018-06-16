@@ -15,15 +15,12 @@ matrix:
       env: LARAVEL=5.1.35 ORCHESTRA=3.1.*
     - php: 7.2
       env: LARAVEL=5.1.35 ORCHESTRA=3.1.*
-    - php: hhvm
-      env: LARAVEL=5.1.35 ORCHESTRA=3.1.*
 
   allow_failures:
     - env: COVERAGE=1
-    - php: hhvm
 
 before_install:
-  - if [[ $TRAVIS_PHP_VERSION != 7.1 ]] && [[ $TRAVIS_PHP_VERSION != hhvm ]] ; then phpenv config-rm xdebug.ini; fi
+  - if [[ $TRAVIS_PHP_VERSION != 7.0 ]] && [[ $TRAVIS_PHP_VERSION != hhvm ]] ; then phpenv config-rm xdebug.ini; fi
   - travis_retry composer self-update
 
 before_script:
